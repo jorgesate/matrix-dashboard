@@ -1,4 +1,4 @@
-# rpi-spotify-matrix-display
+# rpi-matrix-display
 A multi purpose LDE matrix display. 
 
 ## Fix to the dim power:

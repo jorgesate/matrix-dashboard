@@ -4,7 +4,6 @@ from PIL import Image, ImageFont, ImageDraw
 from datetime import datetime
 from dateutil import tz
 import time
-import threading
 
 from apps_v2 import pomodoro
 
@@ -28,10 +27,10 @@ class MainScreen:
         self.modules = modules
         self.default_actions = default_actions
 
-        self.canvas_width = config.getint('System', 'canvas_width', fallback=64)
-        self.canvas_height = config.getint('System', 'canvas_height', fallback=32)
-        self.cycle_time = config.getint('Main Screen', 'cycle_time', fallback=10)
-        self.use_24_hour = config.getboolean('Main Screen', 'use_24_hour', fallback=True)
+        self.canvas_width = config.getint('System', 'canvas_width', fallback = 64)
+        self.canvas_height = config.getint('System', 'canvas_height', fallback = 32)
+        self.cycle_time = config.getint('Main Screen', 'cycle_time', fallback = 60)
+        self.use_24_hour = config.getboolean('Main Screen', 'use_24_hour', fallback = True)
 
         self.vertical = pomodoro.PomodoroScreen(config, modules, default_actions)
 
