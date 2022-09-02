@@ -1,0 +1,4 @@
+Run at startup acording to your hardware.
+
+sudo ./REG_Init_Demo
+
