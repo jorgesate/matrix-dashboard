@@ -36,9 +36,10 @@ class MainScreen:
 
         self.lastGenerateCall = None
         self.on_cycle = True
-        self.one_call = None
 
+        self.one_call = None
         self.cycles = 10
+        self.curr_temp = 0
 
         self.bgs = {'bladerunner': Image.open('/home/pi/matrix-screen/apps_v2/res/main_screen/bladerunner.png').convert("RGB"),
                     'city': Image.open('/home/pi/matrix-screen/apps_v2/res/main_screen/city.png').convert("RGB"),
@@ -148,15 +149,15 @@ class MainScreen:
             draw.text((x_date, y_date), dayOfWeekToText(dayOfWeek), black, font=self.font)
             #weather
             weather = self.modules['weather']
-            if (self.cycles > 5):
+            if (self.cycles > 30):
                 self.one_call = weather.getWeather()
                 if (self.one_call != None):
-                    curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
-                    draw.text((x_date + 10, y_date), padToTwoDigit(curr_temp), blueish, font=self.font)
+                    self.curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
                 self.cycles = 0
             else:
                 self.cycles = self.cycles + 1
-        
+            draw.text((x_date + 10, y_date), padToTwoDigit(self.curr_temp), blueish, font=self.font)
+
         return frame
 
     def generateForestSunset(self):
@@ -202,11 +203,11 @@ class MainScreen:
             draw.text((x_date, y_date), dayOfWeekToText(dayOfWeek), time_color, font=self.font)
             #weather
             weather = self.modules['weather']
-            if (self.cycles > 5):
+            if (self.cycles > 30):
                 self.one_call = weather.getWeather()
                 if (self.one_call != None):
-                    curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
-                    draw.text((x_date + 10, y_date), padToTwoDigit(curr_temp), temperature_color, font=self.font)
+                    self.curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
+                    draw.text((x_date + 10, y_date), padToTwoDigit(self.curr_temp), temperature_color, font=self.font)
                 self.cycles = 0
             else:
                 self.cycles = self.cycles + 1
@@ -252,15 +253,15 @@ class MainScreen:
             draw.text((x_date, y_date), dayOfWeekToText(dayOfWeek), death_star_green, font=self.font)
             #weather
             weather = self.modules['weather']
-            if (self.cycles > 5):
+            if (self.cycles > 30):
                 self.one_call = weather.getWeather()
                 if (self.one_call != None):
-                    curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
-                    draw.text((x_date + 10, y_date), padToTwoDigit(curr_temp), death_star_dark_green, font=self.font)
+                    self.curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
                 self.cycles = 0
             else:
                 self.cycles = self.cycles + 1
-        
+            draw.text((x_date + 10, y_date), padToTwoDigit(self.curr_temp), death_star_dark_green, font=self.font)
+
         return frame
 
     def generateRetroVice(self):
@@ -306,14 +307,14 @@ class MainScreen:
             draw.text((x_date, y_date), dayOfWeekToText(dayOfWeek), time_color, font=self.font)
             #weather
             weather = self.modules['weather']
-            if (self.cycles > 5):
+            if (self.cycles > 30):
                 self.one_call = weather.getWeather()
                 if (self.one_call != None):
-                    curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
-                    draw.text((x_date + 10, y_date), padToTwoDigit(curr_temp), temperature_color, font=self.font)
+                    self.curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
                 self.cycles = 0
             else:
                 self.cycles = self.cycles + 1
+            draw.text((x_date + 10, y_date), padToTwoDigit(self.curr_temp), temperature_color, font=self.font)
         
         return frame
 
@@ -360,15 +361,14 @@ class MainScreen:
             draw.text((x_date, y_date), dayOfWeekToText(dayOfWeek), time_color, font=self.font)
             #weather
             weather = self.modules['weather']
-            if (self.cycles > 5):
+            if (self.cycles > 30):
                 self.one_call = weather.getWeather()
                 if (self.one_call != None):
-                    curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
-                    draw.text((x_date + 10, y_date), padToTwoDigit(curr_temp), temperature_color, font=self.font)
+                    self.curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
                 self.cycles = 0
             else:
                 self.cycles = self.cycles + 1
-        
+            draw.text((x_date + 10, y_date), padToTwoDigit(self.curr_temp), temperature_color, font=self.font)
         return frame
     
     def generateDroids(self):
@@ -415,14 +415,14 @@ class MainScreen:
             draw.text((x_date, y_date), dayOfWeekToText(dayOfWeek), temperature_color, font=self.font)
             #weather
             weather = self.modules['weather']
-            if (self.cycles > 5):
+            if (self.cycles > 30):
                 self.one_call = weather.getWeather()
                 if (self.one_call != None):
-                    curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
-                    draw.text((x_date + 10, y_date), padToTwoDigit(curr_temp), temperature_color, font=self.font)
+                    self.curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
                 self.cycles = 0
             else:
                 self.cycles = self.cycles + 1
+            draw.text((x_date + 10, y_date), padToTwoDigit(self.curr_temp), temperature_color, font=self.font)
         
         return frame
 
@@ -471,14 +471,14 @@ class MainScreen:
             draw.text((x_date, y_date), dayOfWeekToText(dayOfWeek), color_3, font=self.font)
             #weather
             weather = self.modules['weather']
-            if (self.cycles > 5):
+            if (self.cycles > 30):
                 self.one_call = weather.getWeather()
                 if (self.one_call != None):
-                    curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
-                    draw.text((x_date + 10, y_date), padToTwoDigit(curr_temp), color_4, font=self.font)
+                    self.curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
                 self.cycles = 0
             else:
                 self.cycles = self.cycles + 1
+            draw.text((x_date + 10, y_date), padToTwoDigit(self.curr_temp), color_4, font=self.font)
         
         return frame
 
@@ -525,14 +525,14 @@ class MainScreen:
             draw.text((x_date, y_date), dayOfWeekToText(dayOfWeek), temperature_color, font=self.font)
             #weather
             weather = self.modules['weather']
-            if (self.cycles > 5):
+            if (self.cycles > 30):
                 self.one_call = weather.getWeather()
                 if (self.one_call != None):
-                    curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
-                    draw.text((x_date + 10, y_date), padToTwoDigit(curr_temp), temperature_color, font=self.font)
+                    self.curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
                 self.cycles = 0
             else:
                 self.cycles = self.cycles + 1
+            draw.text((x_date + 10, y_date), padToTwoDigit(self.curr_temp), temperature_color, font=self.font)
         
         return frame
                              
@@ -565,11 +565,14 @@ class MainScreen:
             draw.text((23, 6), dayOfWeekToText(dayOfWeek), dark_pink, font=self.font)
             #weather
             weather = self.modules['weather']
-            one_call = weather.getWeather()
-            if (one_call != None):
-                curr_temp = round(one_call.current.temperature('celsius')['temp'])
-                draw.text((33, 6), padToTwoDigit(curr_temp), white, font=self.font)
-                #draw.point((41,6), fill=white)
+            if (self.cycles > 30):
+                self.one_call = weather.getWeather()
+                if (self.one_call != None):
+                    self.curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
+                self.cycles = 0
+            else:
+                self.cycles = self.cycles + 1
+            draw.text((33, 6), padToTwoDigit(self.curr_temp), white, font=self.font)
         
         return frame
 
@@ -616,14 +619,14 @@ class MainScreen:
             draw.text((x_date, y_date), dayOfWeekToText(dayOfWeek), temperature_color, font=self.font)
             #weather
             weather = self.modules['weather']
-            if (self.cycles > 5):
+            if (self.cycles > 30):
                 self.one_call = weather.getWeather()
                 if (self.one_call != None):
-                    curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
-                    draw.text((x_date + 10, y_date), padToTwoDigit(curr_temp), temperature_color, font=self.font)
+                    self.curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
                 self.cycles = 0
             else:
                 self.cycles = self.cycles + 1
+            draw.text((x_date + 10, y_date), padToTwoDigit(self.curr_temp), temperature_color, font=self.font)
         
         return frame
 
