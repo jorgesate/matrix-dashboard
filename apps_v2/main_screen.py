@@ -117,7 +117,7 @@ class MainScreen:
                 self.curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
                 self.lastWeatherCall = time.time()
 
-        frame = self.theme_list[self.currentIdx % len(self.theme_list)]()
+        frame = self.theme_list[self.currentIdx % len(self.theme_list)](**locals())
         
         if (self.selectMode):
             draw = ImageDraw.Draw(frame)
