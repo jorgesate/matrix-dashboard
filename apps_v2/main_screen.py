@@ -123,7 +123,7 @@ class MainScreen:
                 self.lastWeatherCall = time.time()
 
         # frame = self.theme_list[self.currentIdx % len(self.theme_list)]()
-        frame = self.generateFrame(self.arguments[self.currentIdx % len(self.arguments)])
+        frame = self.generateFrame(*self.arguments[self.currentIdx % len(self.arguments)])
         
         if (self.selectMode):
             draw = ImageDraw.Draw(frame)
