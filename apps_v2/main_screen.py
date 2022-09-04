@@ -55,7 +55,7 @@ class MainScreen:
                     'dune': Image.open('/home/pi/matrix-screen/apps_v2/res/main_screen/dune.png').convert("RGB"),
                     'samurai': Image.open('/home/pi/matrix-screen/apps_v2/res/main_screen/samurai.png').convert("RGB")}
                     
-        self.theme_list = [self.generateBladerunner,
+        self.theme_list = [self.generateFrame('bladerunner', 28, 3, 33, 10, (174, 148, 200), (222, 160, 185)),
                            self.generateCity,
                            self.generateForestSunset,
                            self.generateDeathStar,
@@ -123,6 +123,42 @@ class MainScreen:
             draw = ImageDraw.Draw(frame)
             draw.rectangle((0,0,self.canvas_width-1,self.canvas_height-1), outline=white)
         
+        return frame
+
+    def generateFrame(self, frame_name, x_time, y_time, x_date, y_date, time_color, temperature_color):
+
+        # Get background image
+        frame = self.bgs[frame_name].copy()
+        draw = ImageDraw.Draw(frame)
+
+        # Get time and date
+        currentTime = datetime.now(tz=tz.tzlocal())
+        month = currentTime.month
+        day = currentTime.day
+        dayOfWeek = currentTime.weekday()
+        hours = currentTime.hour
+        if not self.use_24_hour:
+            hours = hours % 12
+            if (hours == 0):
+                hours += 12 
+        minutes = currentTime.minute
+
+        # Draw time
+        draw.text((x_time, y_time), padToTwoDigit(hours), time_color, font=self.font)
+        draw.text((x_time + 7, y_time), ":", time_color, font=self.font)
+        draw.text((x_time + 10, y_time), padToTwoDigit(minutes), time_color, font=self.font)
+        
+        if (self.on_cycle_generate):
+            #date
+            draw.text((x_date, y_date), padToTwoDigit(day), time_color, font=self.font)
+            draw.text((x_date + 7, y_date), ".", time_color, font=self.font)
+            draw.text((x_date + 10, y_date), padToTwoDigit(month), time_color, font=self.font)
+        else:
+            #dayOfWeek
+            draw.text((x_date, y_date), dayOfWeekToText(dayOfWeek), time_color, font=self.font)
+            #weather
+            draw.text((x_date + 10, y_date), padToTwoDigit(self.curr_temp), temperature_color, font=self.font)
+
         return frame
 
     def generateCity(self):
