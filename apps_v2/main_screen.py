@@ -55,7 +55,12 @@ class MainScreen:
                     'dune': Image.open('/home/pi/matrix-screen/apps_v2/res/main_screen/dune.png').convert("RGB"),
                     'samurai': Image.open('/home/pi/matrix-screen/apps_v2/res/main_screen/samurai.png').convert("RGB")}
                     
-        self.theme_list = [self.generateFrame('bladerunner', 28, 3, 33, 10, (174, 148, 200), (222, 160, 185)),
+        self.arguments = [('bladerunner',   28, 3, 33, 10, (174, 148, 200), (222, 160, 185)),
+                          ('city',          2, 2, 45, 2,   (0, 0, 0),       (10, 0, 230)),
+                          ('forest_sunset', 3, 3, 25, 3,   (39, 4, 74),     (100, 11, 149))]
+        
+
+        self.theme_list = [self.generateFrame,
                            self.generateCity,
                            self.generateForestSunset,
                            self.generateDeathStar,
@@ -117,7 +122,8 @@ class MainScreen:
                 self.curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
                 self.lastWeatherCall = time.time()
 
-        frame = self.theme_list[self.currentIdx % len(self.theme_list)](**locals())
+        # frame = self.theme_list[self.currentIdx % len(self.theme_list)]()
+        frame = self.generateFrame(self.arguments[self.currentIdx % len(self.arguments)])
         
         if (self.selectMode):
             draw = ImageDraw.Draw(frame)
