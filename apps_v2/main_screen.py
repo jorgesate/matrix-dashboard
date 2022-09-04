@@ -36,7 +36,7 @@ class MainScreen:
         self.vertical = pomodoro.PomodoroScreen(config, modules, default_actions)
 
         self.lastGenerateCall = None
-        self.lastWeatherCall = None
+        self.lastWeatherCall = 0
         self.on_cycle_generate = True
         self.on_cycle_weather = True
 
@@ -106,7 +106,7 @@ class MainScreen:
 
         # Update weather each [self.cycle_time_weather] seconds and on first run
         weather = self.modules['weather']
-        if (self.lastWeatherCall == None):
+        if (self.lastWeatherCall == 0):
             self.one_call = weather.getWeather()
             if (self.one_call != None):
                 self.curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
