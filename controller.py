@@ -7,7 +7,7 @@ from PIL import Image
 
 import select
 
-from apps_v2 import main_screen, notion_v2, weather, life, spotify_player
+from apps_v2 import main_screen, notion_v2, weather, life, spotify_player, gif_viewer
 from modules import weather_module, spotify_module
 
 sys.path.append("/home/pi/rpi-rgb-led-matrix/bindings/python")
@@ -39,7 +39,6 @@ def main():
     sw_bt = 10
     prev_bt = 9
     brig_bt = 11
-    tilt = 8
 
     encButton = Button(sw_bt, pull_up = False)
     encButton.when_pressed = lambda button : encButtonFunc(button, inputStatusDict, isHorizontalDict)
@@ -102,11 +101,12 @@ def main():
                 }
 
     app_list = [main_screen.MainScreen(config, modules, callbacks),
+                gif_viewer.GifScreen(config, modules, callbacks),
                 notion_v2.NotionScreen(config, modules, callbacks),
                 weather.WeatherScreen(config, modules, callbacks),
-                # gif_viewer.GifScreen(config, modules, callbacks),
-                life.GameOfLifeScreen(config, modules, callbacks),
-                spotify_player.SpotifyScreen(config, modules, callbacks)]
+                spotify_player.SpotifyScreen(config, modules, callbacks)
+                # life.GameOfLifeScreen(config, modules, callbacks),
+                ]
 
     currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
     
