@@ -14,7 +14,7 @@ class GifScreen:
 
         location = config.get('Gif Viewer', 'location', fallback=None)
         if location is None:
-            print("[Gif Viewer] Location of gifs is not specified in config")
+            # print("[Gif Viewer] Location of gifs is not specified in config")
             self.animations = []
         else:
             self.animations = loadAnimations(location)
@@ -67,7 +67,7 @@ class GifScreen:
         return frame
 
 def loadAnimations(location):
-    print(location)
+    # print(location)
     result = []
     for filename in os.listdir(location):
         if filename.endswith(".gif"):
