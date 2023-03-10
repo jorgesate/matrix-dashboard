@@ -30,20 +30,20 @@ class GifScreen:
     def generate(self, isHorizontal, inputStatus):
         if (inputStatus == InputStatusEnum.LONG_PRESS):
             self.selectMode = not self.selectMode
-        
+
         if self.selectMode:
-            if (inputStatus is InputStatusEnum.ENCODER_INCREASE):
+            if (inputStatus is InputStatusEnum.NEXT_SP):
                 self.currentIdx += 1
-                self.cnt = 0
-            elif (inputStatus is InputStatusEnum.ENCODER_DECREASE):
+                self.queued_frames = []
+            elif (inputStatus is InputStatusEnum.PREVIOUS_SP):
                 self.currentIdx -= 1
-                self.cnt = 0
+                self.queued_frames = []
         else:
             if (inputStatus is InputStatusEnum.SINGLE_PRESS):
                 self.default_actions['toggle_display']()
-            elif (inputStatus is InputStatusEnum.ENCODER_INCREASE):
+            elif (inputStatus is InputStatusEnum.NEXT_SP):
                 self.default_actions['switch_next_app']()
-            elif (inputStatus is InputStatusEnum.ENCODER_DECREASE):
+            elif (inputStatus is InputStatusEnum.PREVIOUS_SP):
                 self.default_actions['switch_prev_app']()
             elif (inputStatus is InputStatusEnum.NEXT_DP):
                 self.default_actions['increase_brightness']()
