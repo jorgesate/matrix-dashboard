@@ -13,7 +13,7 @@ class NotionScreen:
         self.modules = modules
         self.default_actions = default_actions
 
-        self.font = ImageFont.truetype("/home/pi/matrix-screen/fonts/tiny.otf", 5)
+        self.font = ImageFont.truetype("/home/pi/matrix-dashboard/fonts/tiny.otf", 5)
         self.queue = LifoQueue()
         self.tasks = None
         self.animation_cnt = [0,0,0,0,0]

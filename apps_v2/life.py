@@ -15,9 +15,9 @@ class GameOfLifeScreen:
         self.default_actions = default_actions
         self.color = (255,255,255)
         self.init_states = [generateRandomState,
-                            lambda : fetchPattern('/home/pi/matrix-screen/apps_v2/res/life_patterns/centinal'),
-                            lambda : fetchPattern('/home/pi/matrix-screen/apps_v2/res/life_patterns/achim_p144'),
-                            lambda : fetchPattern('/home/pi/matrix-screen/apps_v2/res/life_patterns/pboj_p22')]
+                            lambda : fetchPattern('/home/pi/matrix-dashboard/apps_v2/res/life_patterns/centinal'),
+                            lambda : fetchPattern('/home/pi/matrix-dashboard/apps_v2/res/life_patterns/achim_p144'),
+                            lambda : fetchPattern('/home/pi/matrix-dashboard/apps_v2/res/life_patterns/pboj_p22')]
         self.curr_state_idx = 0
         self.state = self.init_states[self.curr_state_idx]()
 

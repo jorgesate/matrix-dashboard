@@ -23,7 +23,7 @@ washed_out_navy = (109,104,117)
 
 class MainScreen:
     def __init__(self, config, modules, default_actions):
-        self.font = ImageFont.truetype("/home/pi/matrix-screen/fonts/tiny.otf", 5)
+        self.font = ImageFont.truetype("/home/pi/matrix-dashboard/fonts/tiny.otf", 5)
         self.modules = modules
         self.default_actions = default_actions
 
@@ -43,17 +43,17 @@ class MainScreen:
         self.one_call = None
         self.curr_temp = 0
 
-        self.bgs = {'bladerunner': Image.open('/home/pi/matrix-screen/apps_v2/res/main_screen/bladerunner.png').convert("RGB"),
-                    'city': Image.open('/home/pi/matrix-screen/apps_v2/res/main_screen/city.png').convert("RGB"),
-                    'forest_sunset': Image.open('/home/pi/matrix-screen/apps_v2/res/main_screen/forest-sunset.png').convert("RGB"),
-                    'death_star': Image.open('/home/pi/matrix-screen/apps_v2/res/main_screen/death-star.png').convert("RGB"),
-                    'droids': Image.open('/home/pi/matrix-screen/apps_v2/res/main_screen/droids.png').convert("RGB"),
-                    'future': Image.open('/home/pi/matrix-screen/apps_v2/res/main_screen/future.png').convert("RGB"),
-                    'retro_vice': Image.open('/home/pi/matrix-screen/apps_v2/res/main_screen/retro_vice.png').convert("RGB"),
-                    'sakura': Image.open('/home/pi/matrix-screen/apps_v2/res/main_screen/sakura-bg.png').convert("RGB"),
-                    'forest': Image.open('/home/pi/matrix-screen/apps_v2/res/main_screen/forest-bg.png').convert("RGB"),
-                    'dune': Image.open('/home/pi/matrix-screen/apps_v2/res/main_screen/dune.png').convert("RGB"),
-                    'samurai': Image.open('/home/pi/matrix-screen/apps_v2/res/main_screen/samurai.png').convert("RGB")}
+        self.bgs = {'bladerunner': Image.open('/home/pi/matrix-dashboard/apps_v2/res/main_screen/bladerunner.png').convert("RGB"),
+                    'city': Image.open('/home/pi/matrix-dashboard/apps_v2/res/main_screen/city.png').convert("RGB"),
+                    'forest_sunset': Image.open('/home/pi/matrix-dashboard/apps_v2/res/main_screen/forest-sunset.png').convert("RGB"),
+                    'death_star': Image.open('/home/pi/matrix-dashboard/apps_v2/res/main_screen/death-star.png').convert("RGB"),
+                    'droids': Image.open('/home/pi/matrix-dashboard/apps_v2/res/main_screen/droids.png').convert("RGB"),
+                    'future': Image.open('/home/pi/matrix-dashboard/apps_v2/res/main_screen/future.png').convert("RGB"),
+                    'retro_vice': Image.open('/home/pi/matrix-dashboard/apps_v2/res/main_screen/retro_vice.png').convert("RGB"),
+                    'sakura': Image.open('/home/pi/matrix-dashboard/apps_v2/res/main_screen/sakura-bg.png').convert("RGB"),
+                    'forest': Image.open('/home/pi/matrix-dashboard/apps_v2/res/main_screen/forest-bg.png').convert("RGB"),
+                    'dune': Image.open('/home/pi/matrix-dashboard/apps_v2/res/main_screen/dune.png').convert("RGB"),
+                    'samurai': Image.open('/home/pi/matrix-dashboard/apps_v2/res/main_screen/samurai.png').convert("RGB")}
                     
         self.arguments = [('bladerunner',   28, 3, 33, 10, (174, 148, 200), (222, 160, 185)),
                           ('city',          2, 2, 45, 2,   (0, 0, 0),       (10, 0, 230)),
