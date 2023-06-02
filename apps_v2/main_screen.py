@@ -30,7 +30,7 @@ class MainScreen:
         self.canvas_width = config.getint('System', 'canvas_width', fallback = 64)
         self.canvas_height = config.getint('System', 'canvas_height', fallback = 32)
         self.cycle_time_generate = config.getint('Main Screen', 'cycle_time', fallback = 20)
-        self.cycle_time_weather = config.getint('Main Screen', 'cycle_time', fallback = 120)
+        self.cycle_time_weather = config.getint('Main Screen', 'cycle_time', fallback = 300)
         self.use_24_hour = config.getboolean('Main Screen', 'use_24_hour', fallback = True)
 
         self.vertical = pomodoro.PomodoroScreen(config, modules, default_actions)
