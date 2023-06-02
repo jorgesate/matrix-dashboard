@@ -44,6 +44,7 @@ class MainScreen:
         self.curr_temp = 0
 
         self.bgs = {'bladerunner': Image.open('/home/pi/matrix-dashboard/apps_v2/res/main_screen/bladerunner.png').convert("RGB"),
+                    'bladerunner_2': Image.open('/home/pi/matrix-dashboard/apps_v2/res/main_screen/bladerunner_2.png').convert("RGB"),
                     'city': Image.open('/home/pi/matrix-dashboard/apps_v2/res/main_screen/city.png').convert("RGB"),
                     'forest_sunset': Image.open('/home/pi/matrix-dashboard/apps_v2/res/main_screen/forest-sunset.png').convert("RGB"),
                     'death_star': Image.open('/home/pi/matrix-dashboard/apps_v2/res/main_screen/death-star.png').convert("RGB"),
@@ -54,8 +55,9 @@ class MainScreen:
                     'forest': Image.open('/home/pi/matrix-dashboard/apps_v2/res/main_screen/forest-bg.png').convert("RGB"),
                     'dune': Image.open('/home/pi/matrix-dashboard/apps_v2/res/main_screen/dune.png').convert("RGB"),
                     'samurai': Image.open('/home/pi/matrix-dashboard/apps_v2/res/main_screen/samurai.png').convert("RGB")}
-                    
-        self.arguments = [('bladerunner',   28, 3, 33, 10, (174, 148, 200), (222, 160, 185)),
+        #                                   x_time, y_time, x_date, y_date, time_color, temperature_color 
+        self.arguments = [('bladerunner',   3, 3, 44, 3,   (174, 148, 200), (222, 160, 185)),
+                          ('bladerunner_2', 28, 3, 33, 10, (174, 148, 200), (222, 160, 185)),
                           ('city',          2, 2, 45, 2,   (0, 0, 0),       (10, 0, 230)),
                           ('forest_sunset', 3, 3, 25, 3,   (39, 4, 74),     (100, 11, 149)),
                           ('death_star',    23, 3, 45, 3,  (172, 245, 251), (19, 148, 179)),
