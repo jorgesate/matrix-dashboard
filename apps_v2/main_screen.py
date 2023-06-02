@@ -56,8 +56,8 @@ class MainScreen:
                     'dune': Image.open('/home/pi/matrix-dashboard/apps_v2/res/main_screen/dune.png').convert("RGB"),
                     'samurai': Image.open('/home/pi/matrix-dashboard/apps_v2/res/main_screen/samurai.png').convert("RGB")}
         #                                   x_time, y_time, x_date, y_date, time_color, temperature_color 
-        self.arguments = [('bladerunner',   3, 3, 44, 3,   (174, 148, 200), (222, 160, 185)),
-                          ('bladerunner_2', 28, 3, 33, 10, (174, 148, 200), (222, 160, 185)),
+        self.arguments = [('bladerunner',   28, 3, 33, 10,   (174, 148, 200), (222, 160, 185)),
+                          ('bladerunner_2', 3, 3, 44, 3, (174, 148, 200), (222, 160, 185)),
                           ('city',          2, 2, 45, 2,   (0, 0, 0),       (10, 0, 230)),
                           ('forest_sunset', 3, 3, 25, 3,   (39, 4, 74),     (100, 11, 149)),
                           ('death_star',    23, 3, 45, 3,  (172, 245, 251), (19, 148, 179)),
