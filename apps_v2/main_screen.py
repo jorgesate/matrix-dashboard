@@ -29,7 +29,7 @@ class MainScreen:
 
         self.canvas_width = config.getint('System', 'canvas_width', fallback = 64)
         self.canvas_height = config.getint('System', 'canvas_height', fallback = 32)
-        self.cycle_time_generate = config.getint('Main Screen', 'cycle_time', fallback = 20)
+        self.cycle_time_generate = config.getint('Main Screen', 'cycle_time', fallback = 10)
         self.cycle_time_weather = config.getint('Main Screen', 'cycle_time', fallback = 300)
         self.use_24_hour = config.getboolean('Main Screen', 'use_24_hour', fallback = True)
 
@@ -108,12 +108,7 @@ class MainScreen:
 
         # Update weather each [self.cycle_time_weather] seconds and on first run
         weather = self.modules['weather']
-        if (self.lastWeatherCall == 0):
-            self.one_call = weather.getWeather()
-            if (self.one_call != None):
-                self.curr_temp = round(self.one_call.current.temperature('celsius')['temp'])
-                self.lastWeatherCall = time.time()
-        if (time.time() - self.lastWeatherCall >= self.cycle_time_weather):
+        if (time.time() - self.lastWeatherCall > self.cycle_time_weather):
             self.one_call = weather.getWeather()
             if (self.one_call != None):
                 self.curr_temp = round(self.one_call.current.temperature('celsius')['temp'])

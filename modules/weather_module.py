@@ -25,9 +25,10 @@ def update_weather(mgr, weather_queue, lat, lon):
     lastTimeCall = 0
     while True:
         currTime = time.time()
-        if (currTime - lastTimeCall >= 600):
+        if (currTime - lastTimeCall >= 1000):
             try:
                 weather_queue.put(mgr.one_call(lat = lat, lon = lon))
                 lastTimeCall = currTime
+                print("Got weather")
             except Exception:
                 pass
