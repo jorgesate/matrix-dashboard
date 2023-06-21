@@ -8,7 +8,7 @@ class WeatherModule:
         self.one_call = None
         self.queue = LifoQueue()
 
-        if config is not None and 'OWM' in config and 'token' in config['OWM'] and config['OWM']['token'] is not "" and 'lat' in config['OWM'] and 'lon' in config['OWM']:   
+        if config != None and 'OWM' in config and 'token' in config['OWM'] and config['OWM']['token'] is not "" and 'lat' in config['OWM'] and 'lon' in config['OWM']:   
             self.mgr = OWM(config['OWM']['token']).weather_manager()
             self.thread = Thread(target = update_weather, args=(self.mgr, self.queue, float(config['OWM']['lat']), float(config['OWM']['lon']),))
             self.thread.start()
@@ -26,11 +26,9 @@ def update_weather(mgr, weather_queue, lat, lon):
     while True:
         currTime = time.time()
         if (currTime - lastTimeCall >= 1000):
-            print("Got weather")
             try:
                 weather_queue.put(mgr.one_call(lat = lat, lon = lon))
                 lastTimeCall = currTime
-                
             except Exception:
                 print("Got weather EXCEPTION")
                 pass
