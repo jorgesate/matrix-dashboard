@@ -34,5 +34,5 @@ def update_weather(mgr, weather_queue, lat, lon):
                 weather_queue.put(message)
                 
             except Exception:
-                
+                print("Exception trying to get weather")
                 pass
