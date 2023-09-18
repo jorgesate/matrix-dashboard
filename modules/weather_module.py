@@ -28,11 +28,11 @@ def update_weather(mgr, weather_queue, lat, lon):
         if (currTime - lastTimeCall >= 1000):
             try:
                 lastTimeCall = currTime
-                print("Trying to get weather")
+                # print("Trying to get weather")
                 message = mgr.one_call(lat = lat, lon = lon)
-                print(message)
+                # print(message)
                 weather_queue.put(message)
                 
             except Exception:
-                print("Exception trying to get weather")
+                # print("Exception trying to get weather")
                 pass
